@@ -1,0 +1,14 @@
+[
+    {
+        "placa": "HJK12G",
+        "modelo": "Suzuki Gixxer 250",
+        "falla": "Cambio de pastillas"
+    },
+    {
+        "placa": "YDM05N",
+        "modelo": "Voge 300 DS",
+        "año": 2026,
+        "estado": "Excelente",
+        "detalles": "Revisión completa en taller"
+    }
+]
