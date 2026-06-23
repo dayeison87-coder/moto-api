@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import json
 import datetime
 import os
+import time
 
 app = Flask(__name__)
 
@@ -24,6 +25,26 @@ def get_repuestos():
             "Aceite motul 7100"
         ]
     })
+
+
+# Health Check para Railway
+@app.route('/api/health', methods=['GET'])
+def health_check():
+
+    sistema_archivos_ok = os.path.exists('/tmp') or os.path.exists('.')
+
+    if sistema_archivos_ok:
+        return jsonify({
+            "status": "healthy",
+            "timestamp": int(time.time()),
+            "environment": "production-cloud",
+            "uptime_check": "passed"
+        }), 200
+    else:
+        return jsonify({
+            "status": "unhealthy",
+            "reason": "Storage unreachable"
+        }), 500
 
 
 # Ruta peritajes (GET y POST)
